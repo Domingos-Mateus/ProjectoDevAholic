@@ -42,6 +42,9 @@ Route::get('/eliminar_crianca/{id}', 'App\Http\Controllers\criancaController@des
 Route::get('/', function () {
     return view('index');
 });
+Route::get('index', function () {
+    return view('index');
+});
 /*
 
 Route::get('/', function () {

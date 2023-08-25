@@ -12,7 +12,7 @@
             <p>Nome</p><input type="text" name="nome_crianca" class="form-control" placeholder="Nome da criança" required><br>
             <p>Sobrenome</p><input type="text" name="sobrenome_crianca" class="form-control" placeholder="Sobrenome da criança" required><br>
             <input type="date" name="data_nascimento" class="form-control" placeholder="Data de Nascimento" required><br>
-            <p>Encarregado</p><select name="id_encarregado" class="form-select">
+            <p>Encarregado</p><select name="id_encarregado" class="form-control">
                 @foreach ($encarregados as $encarregado)
                 <option value="{{$encarregado->id}}">{{$encarregado->nome_encarregado}}</option><br>
                 @endforeach
