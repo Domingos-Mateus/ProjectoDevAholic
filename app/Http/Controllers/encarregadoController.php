@@ -22,7 +22,7 @@ class encarregadoController extends Controller
 
         //return $encarregado;
 
-        return view('encarregado/listar_encarregados', compact('encarregados'));
+        return view('admin/listar_encarregado', compact('encarregados'));
     }
 
     /**
@@ -73,7 +73,9 @@ class encarregadoController extends Controller
         }
         Alert::success('Cadastrado', 'Encarregado cadastrado com sucesso');
 
-        return redirect('encarregado/listar_encarregado');
+        return redirect('crianca/registar_crianca');
+
+        //return redirect('encarregado/listar_encarregado');
     }
 
     /**

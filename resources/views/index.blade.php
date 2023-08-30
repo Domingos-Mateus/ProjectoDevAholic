@@ -11,7 +11,7 @@
 
     <style>
       .banner-image{
-        background-image: url(img/banner-image.jpg);
+        background-image: url(img/Imagmparabaner.jpg);
         background-size: cover;
       }
     </style>
@@ -41,17 +41,21 @@
             <a href="#" class="nav-link text-white">Página Inicial</a>
           </li>
           <li class="nav-item">
+            <a href="/admin/registar" class="nav-link text-white">Cadstro</a>
+            <!--
+          </li>
+          <li class="nav-item">
             <a href="/encarregado/listar_encarregado" class="nav-link text-white">Encarregados</a>
             
           </li>
           <li class="nav-item">
             <a href="/crianca/listar_crianca" class="nav-link text-white">Crianças</a>
           </li>
-          
+          -->
                     <!-- Button trigger modal -->
-<li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+<a href="/login"><li><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
   Entrar
-</button></li>
+</button></li></a>
 
         </ul>
 
@@ -59,12 +63,46 @@
     </div>
   </nav>
 <!--banner image-->
-  <div class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center">
-    <div class="content text-center">
-      <h1 class="text-white">DEVAHOLIC</h1>
-
+<div id="carouselExampleCaptions" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="/img/Imagmparabaner.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Primeiro Slid</h5>
+        <p>Temos Enúmeras vantagens</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/img/Img2.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Diversão</h5>
+        <p>Outro conteúdo</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="/img/Banner3.jpg" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Conteúdo 3</h5>
+        <p>Segurança e Privacidade</p>
+      </div>
     </div>
   </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Próximo</span>
+  </button>
+</div>
+
+<!--EndBarnner-->
 
 <!--Main content Area-->
 <div class="container my-5 d-grid gap-5">

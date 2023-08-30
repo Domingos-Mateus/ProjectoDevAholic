@@ -17,5 +17,7 @@
     
                 <p>Nome da Criança</p>
                 <p>{{$crianca->nome_crianca}}</p>
+                <p>{{$crianca->sobrenome_crianca}}</p>
+                <p>{{$crianca->data_nascimento}}</p>
                 @endforeach
     @endsection
