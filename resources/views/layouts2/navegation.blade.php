@@ -11,14 +11,14 @@
       color: #1707c9;
     }
 
-    .dev-aholic{
+    #dev-aholic{
       color: #e4e3f0;
     }
 </style>
 
   <nav class="navbar fixed-top navbar-expand-lg bg-dark p-md-3">
     <div class="container">
-      <a href="#" class="navbar-brand" class="dev-aholic">DevAholic</a>
+      <a href="#" class="navbar-brand" id="dev-aholic">DevAholic</a>
       <button
       type="button"
       class="navbar-toggler"

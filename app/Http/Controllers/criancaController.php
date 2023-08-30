@@ -31,7 +31,7 @@ class criancaController extends Controller
 
         //return $crianca;
 
-        return view('crianca/listar_crianca', compact('crianca','encarregados'));
+        return view('admin/listar_crianca', compact('crianca','encarregados'));
     }
 
     /**
@@ -83,10 +83,22 @@ class criancaController extends Controller
     public function show($id)
     {
         //
-        $crianca = Crianca::find($id);
+        $criancas = Crianca::find($id);
+
+        $encarregado = Encarregado::where('id', $id)->get();
 
         //return $crianca;
-        return view('crianca/visualizar_crianca', compact('crianca'));
+       // return view('crianca/visualizar_crianca', compact('crianca','encarregado'));
+
+
+        //$encarregado = Encarregado::find($id);
+
+        //$criancas = Crianca::where('id_encarregado', $id)->get();
+
+
+        //return $encarregado;
+        //return $crianca;
+        return view('crianca/visualizar_crianca', compact('encarregado','criancas'));
     }
 
     /**

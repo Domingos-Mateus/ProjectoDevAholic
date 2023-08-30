@@ -4,7 +4,7 @@
     @section('conteudo')
     <br><br>
 
-    <a href="/encarregado/registar_encarregado"><button class="btn btn-primary btn-lg"><i class="bi bi-person-plus-fill"></i></button></a>
+    <a href="#"><button class="btn btn-primary btn-lg"><i class="bi bi-person-plus-fill"></i></button></a>
     <br><br>
     <table class="table table-striped">
         <thead >
