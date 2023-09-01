@@ -13,7 +13,7 @@
             </tr>
         </thead>
 
-        @foreach ($crianca as $crianca)
+        @foreach ($criancas as $crianca)
             <tr>
                 <th><p>{{$crianca->nome_crianca}}</p></th>
                 <th><p>{{$crianca->sobrenome_crianca}}</p></th>
@@ -30,6 +30,7 @@
             </tr>
             @endforeach
     </table>
+    {{ $criancas->links()}}
     
             
             <!-- Form End -->

@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Crianca;
 
 use App\Models\Encarregado;
+use File;
 use Alert;
 use DB;
-
 
 class criancaController extends Controller
 {
@@ -21,17 +21,16 @@ class criancaController extends Controller
     public function index()
     {
         //
-        $crianca = DB::table('criancas')
+        $criancas = DB::table('criancas')
                 ->join('encarregados','encarregados.id','criancas.id_encarregado')
-                ->select('criancas.*', 'encarregados.nome_encarregado')
-                ->get();
+                ->select('criancas.*', 'encarregados.nome_encarregado')->paginate(10);
 
-
-        $encarregados = Encarregado::all();
+        //$encarregados = Encarregado::all()->paginate(10);
+        $encarregados = DB::table('encarregados');
 
         //return $crianca;
 
-        return view('admin/listar_crianca', compact('crianca','encarregados'));
+        return view('admin/listar_crianca', compact('criancas','encarregados'));
     }
 
     /**

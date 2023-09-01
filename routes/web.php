@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 //Cadastrar
 Route::get('/cadastro/cadastrar', 'App\Http\Controllers\cadastroController@create');
 Route::post('/salvar_cadastro', 'App\Http\Controllers\cadastroController@store');
+//Route::get('/admin/editar_cadastro/{id}', 'App\Http\Controllers\cadastroController@edit');
+
 
 Route::get('/cadastro/editar_cadastro/{id}', 'App\Http\Controllers\cadastroController@edit');
 Route::put('/editar_cadastro/update/{id}', 'App\Http\Controllers\cadastroController@update');
@@ -52,7 +54,7 @@ Route::put('/editar_crianca/update/{id}', 'App\Http\Controllers\criancaControlle
 Route::get('/eliminar_crianca/{id}', 'App\Http\Controllers\criancaController@destroy');
 
 //Administrador
-Route::get('/admin/dashboard', 'App\Http\Controllers\dashboardController@create')->middleware(['auth']);
+Route::get('/admin/dashboard', 'App\Http\Controllers\dashboardController@index')->middleware(['auth']);
 Route::get('/logout', 'App\Http\Controllers\appController@logout');
 
 

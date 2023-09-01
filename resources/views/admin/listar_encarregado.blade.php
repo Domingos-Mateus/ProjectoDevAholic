@@ -26,7 +26,13 @@
                     <a href="/eliminar_encarregado/{{$encarregado->id}}"><button class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i></button></a>
                 </th>
             </tr>
+
+            
             @endforeach
+
+            
     </table>
+
+    {{ $encarregados->links()}}
 
 @endsection
