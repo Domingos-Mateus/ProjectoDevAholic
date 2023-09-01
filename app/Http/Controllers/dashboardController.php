@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
 
+use App\Models\Crianca;
+use App\Models\User;
+use App\Models\Encarregado;
+use File;
+use Alert;
+use DB;
 
 class dashboardController extends Controller
 {
@@ -17,6 +23,21 @@ class dashboardController extends Controller
     public function index()
     {
         //
+
+        $usuarioLog = Auth::user();
+
+        //return $usuarioLog;
+
+        //return view('admin/dashboard', compact('usuarioLog'));
+ 
+
+$crianca = Crianca::count();
+$encarregado = Encarregado::count();
+$usuario = User::count();
+//return view('dashboard', compact('contagem'));
+
+//return $contagem;
+return view('admin/dashboard', compact('crianca','encarregado','usuario','usuarioLog'));
     }
 
     /**
@@ -27,11 +48,11 @@ class dashboardController extends Controller
     public function create()
     {
         //
-        $usuarioLog = Auth::user();
+        //$usuarioLog = Auth::user();
 
         //return $usuarioLog;
 
-        return view('admin/dashboard', compact('usuarioLog'));
+        //return view('admin/dashboard', compact('usuarioLog'));
         //return view('admin/listar_encarregado', compact('encarregados'));
     }
 

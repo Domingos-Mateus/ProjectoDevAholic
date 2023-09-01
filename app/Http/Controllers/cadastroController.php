@@ -69,8 +69,9 @@ class cadastroController extends Controller
         
 
         $crianca->save();
-
-        return 'Dados salvo com sucesso';
+        Alert::success('Salvo', 'Registro salvo com sucesso');
+        //return 'Dados salvo com sucesso';
+        return redirect('admin/dashboard');
     }
 
     /**

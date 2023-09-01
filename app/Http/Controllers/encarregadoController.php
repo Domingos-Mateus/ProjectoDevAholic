@@ -7,6 +7,7 @@ use App\Models\Encarregado;
 use App\Models\Crianca;
 use File;
 use Alert;
+use DB;
 
 class encarregadoController extends Controller
 {
@@ -18,9 +19,9 @@ class encarregadoController extends Controller
     public function index()
     {
         //
-        $encarregados = Encarregado::all();
+        $encarregados = DB::table('encarregados')->paginate(10);
 
-        //return $encarregado;
+        //return $encarregados;
 
         return view('admin/listar_encarregado', compact('encarregados'));
     }

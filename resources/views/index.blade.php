@@ -38,10 +38,10 @@
         <div class="mx-auto"></div>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="#" class="nav-link text-white">Página Inicial</a>
+            <a href="/index" class="nav-link text-white">Página Inicial</a>
           </li>
           <li class="nav-item">
-            <a href="/admin/registar" class="nav-link text-white">Cadstro</a>
+            <a href="#" class="nav-link text-white">Cadastro</a>
             <!--
           </li>
           <li class="nav-item">

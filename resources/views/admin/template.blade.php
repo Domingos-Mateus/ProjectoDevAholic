@@ -29,6 +29,7 @@
 
     <!-- Template Stylesheet -->
     <link href="/dashboard/css/style.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
 </head>
 
 <body>
@@ -36,7 +37,7 @@
 @include('admin.siderbar')
 @yield('conteudo')
 
-
+@include('admin.footer')
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
