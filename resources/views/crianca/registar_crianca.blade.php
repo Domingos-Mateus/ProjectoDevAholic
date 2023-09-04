@@ -1,7 +1,6 @@
-@extends('layouts2.app2')
-    
-    
-    @section('conteudo')
+@extends('admin.template')
+
+@section('conteudo')
 
     <div class="pt-3" style="display: flex; justify-content: center">
         <div class="col-9 col-md-5 col-lg-7">

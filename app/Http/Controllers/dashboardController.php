@@ -34,10 +34,12 @@ class dashboardController extends Controller
 $crianca = Crianca::count();
 $encarregado = Encarregado::count();
 $usuario = User::count();
+
+$totalPessoas = $crianca + $encarregado + $usuario;
 //return view('dashboard', compact('contagem'));
 
 //return $contagem;
-return view('admin/dashboard', compact('crianca','encarregado','usuario','usuarioLog'));
+return view('admin/dashboard', compact('crianca','encarregado','usuario','usuarioLog','totalPessoas'));
     }
 
     /**

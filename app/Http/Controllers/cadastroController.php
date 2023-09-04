@@ -129,10 +129,10 @@ class cadastroController extends Controller
         $encarregado->passaporte = $request->input('passaporte');
         $encarregado->anexo = $request->input('anexo');
 
-        Alert::success('Salvo', 'Dados Salvo com sucesso com sucesso');
+        Alert::success('Editado', 'Dados Salvo com sucesso com sucesso');
 
 
-        return redirect('crianca/listar_crianca');
+        return redirect('admin/listar_crianca');
     }
 
     /**

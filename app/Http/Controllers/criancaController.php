@@ -70,7 +70,7 @@ class criancaController extends Controller
         Alert::success('Salvo', 'Criança salva com sucesso');
 
 
-        return redirect('crianca/listar_crianca');
+        return redirect('admin/listar_crianca');
     }
 
     /**
@@ -132,7 +132,7 @@ class criancaController extends Controller
         // Mais atributos do modelo
         $crianca->save();
         Alert::success('Actualizado', 'Criança Actualizada com sucesso');
-        return redirect('crianca/listar_crianca');
+        return redirect('admin/listar_crianca');
     }
 
     /**
@@ -146,9 +146,10 @@ class criancaController extends Controller
         //
         Crianca::destroy($id);
 
+
     
         //return 'Dados eliminado com sucesso';
         Alert::error('Eliminado', 'Criança Eliminada com sucesso');
-        return redirect('/crianca/listar_crianca');
+        return redirect('admin/listar_crianca');
     }
 }
