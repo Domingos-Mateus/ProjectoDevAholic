@@ -10,9 +10,7 @@ class sheetDbController extends Controller
     //
 
     public function get_encarregados(){
-
         $sheetdb = new SheetDB('oz1psxg4blsfw');
-
         dd($sheetdb->get());
     }
 

@@ -8,6 +8,7 @@ use App\Models\Crianca;
 use File;
 use Alert;
 use DB;
+use SheetDB\SheetDB;
 
 class encarregadoController extends Controller
 {
@@ -19,6 +20,7 @@ class encarregadoController extends Controller
     public function index()
     {
         //
+
         $encarregados = DB::table('encarregados')->paginate(10);
 
         //return $encarregados;
@@ -46,6 +48,7 @@ class encarregadoController extends Controller
     public function store(Request $request)
     {
         //
+
         $encarregado = new Encarregado;
         $encarregado->nome_encarregado = $request->nome;
         $encarregado->sobrenome_encarregado = $request->sobrenome;

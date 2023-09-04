@@ -9,6 +9,7 @@ use App\Models\encarregado;
 use File;
 use Alert;
 use Illuminate\Support\Facades\Auth;
+use SheetDB\SheetDB;
 
 class cadastroController extends Controller
 {
@@ -20,6 +21,8 @@ class cadastroController extends Controller
     public function index()
     {
         //
+        $sheetdb = new SheetDB('oz1psxg4blsfw');
+        dd($sheetdb->get());
     }
 
     /**
@@ -33,7 +36,7 @@ class cadastroController extends Controller
         $usuarioLog = Auth::user();
 
 
-        
+
         return view('admin/registar', compact('usuarioLog'));
     }
 
@@ -45,31 +48,52 @@ class cadastroController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $encarregado = new Encarregado;
-        $encarregado->nome_encarregado = $request->nome;
-        $encarregado->sobrenome_encarregado = $request->sobrenome;
-        $encarregado->email = $request->email;
-        $encarregado->telefone = $request->telefone;
-        $encarregado->cpf = $request->cpf;
-        $encarregado->rg = $request->rg;
-        $encarregado->passaporte = $request->passaporte;
-        $encarregado->anexo = $request->anexo;
 
-        $encarregado->save();
+        $sheetdb = new SheetDB('oz1psxg4blsfw');
+
+        $sheetdb->create(
+            [
+                'nome_encarregado' => $request->nome,
+                'sobrenome_encarregado' => $request->sobrenome,
+                'email' => $request->email,
+                'telefone' => $request->telefone,
+                'cpf' => $request->cpf,
+                'rg' => $request->rg,
+                'passaporte' => $request->passaporte,
+                'nome_crianca' => $request->nome_crianca,
+                'sobrenome_crianca' => $request->sobrenome_crianca,
+                'data_nascimento' => $request->data_nascimento,
+                'id_encarregado' => $request->id_encarregado,
+            ]
+        );
+
+        // return 'aaa';
+
+        //
+        // $encarregado = new Encarregado;
+        // $encarregado->nome_encarregado = $request->nome;
+        // $encarregado->sobrenome_encarregado = $request->sobrenome;
+        // $encarregado->email = $request->email;
+        // $encarregado->telefone = $request->telefone;
+        // $encarregado->cpf = $request->cpf;
+        // $encarregado->rg = $request->rg;
+        // $encarregado->passaporte = $request->passaporte;
+        // $encarregado->anexo = $request->anexo;
+
+        // $encarregado->save();
 
         //return $encarregado;
 
         //Criança
-        $crianca = new Crianca;
-        $crianca->nome_crianca = $request->nome_crianca;
-        $crianca->sobrenome_crianca = $request->sobrenome_crianca;
-        $crianca->data_nascimento = $request->data_nascimento;
-        $crianca->id_encarregado = $encarregado->id;
-        
+        // $crianca = new Crianca;
+        // $crianca->nome_crianca = $request->nome_crianca;
+        // $crianca->sobrenome_crianca = $request->sobrenome_crianca;
+        // $crianca->data_nascimento = $request->data_nascimento;
+        // $crianca->id_encarregado = $encarregado->id;
 
-        $crianca->save();
-        Alert::success('Salvo', 'Registro salvo com sucesso');
+
+        // $crianca->save();
+        Alert::success('Salvo', 'Formulário salvo com sucesso');
         //return 'Dados salvo com sucesso';
         return redirect('admin/dashboard');
     }
