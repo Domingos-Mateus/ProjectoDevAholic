@@ -135,7 +135,7 @@ class encarregadoController extends Controller
         $encarregado->save();
 
         Alert::success('Actualizado', 'Encarregado Actualizado com sucesso');
-        return redirect('encarregado/listar_encarregado');
+        return redirect('admin/listar_encarregado');
     }
 
     /**
@@ -146,12 +146,17 @@ class encarregadoController extends Controller
      */
     public function destroy($id)
     {
+        $totalCriancas = Crianca::where('id_encarregado', '=', $id)->count();
+        //return $totalCriancas;
+
+        if($totalCriancas > 0){
+            Alert::warning('Impossível', 'Existe criança vinculada a este encarregado!');
+            return redirect('admin/listar_encarregado');
+        }
         //
         Encarregado::destroy($id);
-
-    
     //return 'Dados eliminado com sucesso';
     Alert::success('Eliminar', 'Encarregado Eliminado com sucesso');
-    return redirect('/encarregado/listar_encarregado');
+    return redirect('admin/listar_encarregado');
     }
 }

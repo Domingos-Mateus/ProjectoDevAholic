@@ -1,20 +1,28 @@
 
+@extends('layouts2.app3')
+    
+    
+    @section('conteudo')
+
+    <div class="pt-3" style="display: flex; justify-content: center">
+        <div class="col-9 col-md-5 col-lg-4">
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
             <!-- Email Address -->
-            <div>
+            <div class="row mb-3">
                 <x-label for="email" :value="__('Email')" />
 
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus />
             </div>
+
 
             <!-- Password -->
             <div class="mt-4">
                 <x-label for="password" :value="__('Password')" />
 
-                <x-input id="password" class="block mt-1 w-full"
+                <x-input id="password" class="form-control"
                                 type="password"
                                 name="password"
                                 required autocomplete="current-password" />
@@ -35,8 +43,12 @@
                     </a>
                 @endif
 
-                <x-button class="ml-3">
+                <x-button class="btn btn-primary">
                     {{ __('Log in') }}
                 </x-button>
             </div>
         </form>
+        </div>
+    </div>
+
+          @endsection

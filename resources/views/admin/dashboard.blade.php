@@ -42,7 +42,7 @@
                         <i class="fa fa-chart-pie fa-5x text-danger"></i>
                         <div class="ms-3">
                             <p class="mb-2">Total de Pessoas</p>
-                            <h6 class="mb-0">25</h6>
+                            <h6 class="mb-0">{{$totalPessoas}}</h6>
                         </div>
                     </div>
                 </div>

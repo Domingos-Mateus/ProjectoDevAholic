@@ -146,9 +146,10 @@ class criancaController extends Controller
         //
         Crianca::destroy($id);
 
+        
     
         //return 'Dados eliminado com sucesso';
         Alert::error('Eliminado', 'Criança Eliminada com sucesso');
-        return redirect('/crianca/listar_crianca');
+        return redirect('admin/listar_crianca');
     }
 }
