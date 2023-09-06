@@ -25,6 +25,12 @@ Route::put('/editar_cadastro/update/{id}', 'App\Http\Controllers\cadastroControl
 
 //Admin
 Route::get('/admin/registar', 'App\Http\Controllers\cadastroController@create');
+Route::get('/admin/listar_formularios', 'App\Http\Controllers\cadastroController@index');
+Route::get('/admin/visualizar_formulario/{id}', 'App\Http\Controllers\cadastroController@show');
+Route::get('/admin/editar_formulario/{id}', 'App\Http\Controllers\cadastroController@edit');
+Route::post('/admin/actualizar_formulario/{id}', 'App\Http\Controllers\cadastroController@update');
+Route::get('/admin/eliminar_formulario/{id}', 'App\Http\Controllers\cadastroController@destroy');
+Route::get('/admin/imprimir_formulario/{id}', 'App\Http\Controllers\cadastroController@imprimir');
 
 
 //Encarregados

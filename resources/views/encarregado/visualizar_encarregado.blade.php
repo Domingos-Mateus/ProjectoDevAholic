@@ -1,5 +1,5 @@
 @extends('layouts2.app2')
-    
+
     @section('conteudo')
 
                 <p>{{$encarregado->nome_encarregado}}</p>
@@ -14,7 +14,7 @@
                 <hr>
 
                 @foreach($criancas as $crianca)
-    
+
                 <p>Nome da Criança</p>
                 <p>{{$crianca->nome_crianca}}</p>
                 <p>{{$crianca->sobrenome_crianca}}</p>

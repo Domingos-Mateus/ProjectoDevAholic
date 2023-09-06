@@ -37,11 +37,11 @@
           <a class="nav-link active" aria-current="page" href="/index">Página Inicial</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/encarregado/listar_encarregado">Encarregados</a>
+          <a class="nav-link" href="/admin/listar_formularios">Formulários</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/crianca/listar_crianca">Crianças</a>
-        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/admin/registar">Crianças</a>
+        </li> -->
 
       </ul>
 
@@ -55,7 +55,7 @@
           </li>
           <li class="nav-item">
             <a href="/encarregado/listar_encarregado" class="nav-link text-white">Encarregados</a>
-            
+
           </li>
           <li class="nav-item">
             <a href="/crianca/listar_crianca" class="nav-link text-white">Crianças</a>

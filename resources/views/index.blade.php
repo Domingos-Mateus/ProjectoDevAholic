@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-   
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -41,12 +41,12 @@
             <a href="/index" class="nav-link text-white">Página Inicial</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link text-white">Cadastro</a>
+            <a href="/admin/registar" class="nav-link text-white">Novo Formulário </a>
             <!--
           </li>
           <li class="nav-item">
             <a href="/encarregado/listar_encarregado" class="nav-link text-white">Encarregados</a>
-            
+
           </li>
           <li class="nav-item">
             <a href="/crianca/listar_crianca" class="nav-link text-white">Crianças</a>
@@ -157,7 +157,7 @@
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-        
+
       </div>
       <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
         <p><h5 class="main-title">sistema desenvolvido por <a href="http://devaholic.ao">DevAholic</a></h5></p>
@@ -172,9 +172,9 @@
     <div class="container">
       <div class="row">
         <div class="col-md-12">
-          
+
         </div>
-      
+
         <div class="col-md-4 contact-box">
           <i class="fas fa-envelope"></i>
         </div>

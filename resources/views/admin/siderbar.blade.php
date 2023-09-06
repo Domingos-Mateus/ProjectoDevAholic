@@ -84,16 +84,16 @@
                     <a href="#" class="dropdown-item">Meu Perfil</a>
                     <a href="#" class="dropdown-item">Configurações</a>
 
-                    
-                   
+
+
                     <a href="/logout" class="dropdown-item">Sair</a>
                 </div>
             </div>
         </div>
     </nav>
     <!-- Navbar End -->
-  
-  
+
+
   <!-- Sidebar Start -->
   <div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-light navbar-light">
@@ -110,21 +110,13 @@
                 <span>Admin</span>
             </div>
 
-            
+
         </div>
         <div class="navbar-nav w-100">
             <a href="/admin/dashboard" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Fazer Registo</a>
-                <div class="dropdown-menu bg-transparent border-0">
-                    <a href="button.html" class="dropdown-item">Buttons</a>
-                    <a href="typography.html" class="dropdown-item">Typography</a>
-                    <a href="element.html" class="dropdown-item">Other Elements</a>
-                </div>
-            </div>
             <a href="/admin/registar" class="nav-item nav-link"><i class="fa fa-book me-2"></i>Registar</a>
-            <a href="/admin/listar_encarregado" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Encarregados</a>
-            <a href="/admin/listar_crianca" class="nav-item nav-link"><i class="fa fa-child me-2"></i>Crianças</a>
+            <a href="/admin/listar_formularios" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Formulários</a>
+            <!-- <a href="/admin/listar_crianca" class="nav-item nav-link"><i class="fa fa-child me-2"></i>Crianças</a>
             <a href="#" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Estatística</a>
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -134,7 +126,7 @@
                     <a href="404.html" class="dropdown-item">404 Error</a>
                     <a href="blank.html" class="dropdown-item">Blank Page</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </nav>
 </div>

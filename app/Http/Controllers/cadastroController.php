@@ -10,6 +10,9 @@ use File;
 use Alert;
 use Illuminate\Support\Facades\Auth;
 use SheetDB\SheetDB;
+use GuzzleHttp\Client;
+use Illuminate\Support\Collection;
+
 
 class cadastroController extends Controller
 {
@@ -21,8 +24,24 @@ class cadastroController extends Controller
     public function index()
     {
         //
-        $sheetdb = new SheetDB('oz1psxg4blsfw');
-        dd($sheetdb->get());
+        $usuarioLog = Auth::user();
+
+        $client = new Client();
+        $url = 'https://sheetdb.io/api/v1/'.env('KEY_GOOGLE_SHEET').'?sort_by=id';
+
+        $headers = [
+            'Content-type'  => 'application/json; charset=utf-8',
+            'Accept'        => 'application/json',
+        ];
+
+        $response = $client->request('GET', $url, [
+            'headers' => $headers
+        ]);
+
+        $formularios = json_decode($response->getBody()->getContents());
+
+
+        return view('admin/app_listar_formularios', compact('formularios','usuarioLog'));
     }
 
     /**
@@ -49,64 +68,111 @@ class cadastroController extends Controller
     public function store(Request $request)
     {
 
-        $sheetdb = new SheetDB('oz1psxg4blsfw');
+        $date = date('Ymd');
+        $time = date('His');
+        $datetimeNumeric = $date;
 
-        $sheetdb->create(
-            [
-                'nome_encarregado' => $request->nome,
-                'sobrenome_encarregado' => $request->sobrenome,
-                'email' => $request->email,
-                'telefone' => $request->telefone,
-                'cpf' => $request->cpf,
-                'rg' => $request->rg,
-                'passaporte' => $request->passaporte,
-                'nome_crianca' => $request->nome_crianca,
-                'sobrenome_crianca' => $request->sobrenome_crianca,
-                'data_nascimento' => $request->data_nascimento,
-                'id_encarregado' => $request->id_encarregado,
-            ]
-        );
+        $caminho_anexo = null;
 
-        // return 'aaa';
+        if($request->anexo){
+            $anexo = $request->anexo;
+            $extensaoAnexo = $anexo->getClientOriginalExtension();
+            if($extensaoAnexo !='pdf' && $extensaoAnexo != 'jpg' && $extensaoAnexo != 'png'){
+                return back()->with('Erro', 'Anexo com formato inválido');
+            }
+        }
 
-        //
-        // $encarregado = new Encarregado;
-        // $encarregado->nome_encarregado = $request->nome;
-        // $encarregado->sobrenome_encarregado = $request->sobrenome;
-        // $encarregado->email = $request->email;
-        // $encarregado->telefone = $request->telefone;
-        // $encarregado->cpf = $request->cpf;
-        // $encarregado->rg = $request->rg;
-        // $encarregado->passaporte = $request->passaporte;
-        // $encarregado->anexo = $request->anexo;
+        if ($request->anexo) {
+            File::move($anexo, public_path().'/anexos/anexo_'.$datetimeNumeric.'.'.$extensaoAnexo);
+            $caminho_anexo = '/anexos/anexo_'.$datetimeNumeric.'.'.$extensaoAnexo;
+        }
 
-        // $encarregado->save();
+    $sheetdb = new SheetDB(env('KEY_GOOGLE_SHEET'));
 
-        //return $encarregado;
+    // Receba os dados das crianças
+    $nomesCriancas = $request->input('nome_crianca');
+    $sobrenomesCriancas = $request->input('sobrenome_crianca');
+    $datasNascimentoCriancas = $request->input('data_nascimento');
 
-        //Criança
-        // $crianca = new Crianca;
-        // $crianca->nome_crianca = $request->nome_crianca;
-        // $crianca->sobrenome_crianca = $request->sobrenome_crianca;
-        // $crianca->data_nascimento = $request->data_nascimento;
-        // $crianca->id_encarregado = $encarregado->id;
+    $criancas = [];
+
+    $sheetdb->create(
+        [
+            'nome_encarregado' => $request->nome,
+            'sobrenome_encarregado' => $request->sobrenome,
+            'email' => $request->email,
+            'telefone' => $request->telefone,
+            'tipo_documento' => $request->tipo_documento,
+            'numero_documento' => $request->numero_documento,
+            'caminho_anexo' => $caminho_anexo,
+            'nome_crianca' => null,
+            'sobrenome_crianca' => null,
+            'data_nascimento_crianca' => null,
+        ]
+    );
 
 
+    if (count($nomesCriancas) > 0)
+    {
+        // Verifique se os arrays têm o mesmo comprimento antes de processar
+        if (count($nomesCriancas) === count($sobrenomesCriancas) && count($sobrenomesCriancas) === count($datasNascimentoCriancas)) {
+            for ($i = 0; $i < count($nomesCriancas); $i++) {
+                $crianca = [
+                    'nome_crianca' => $nomesCriancas[$i],
+                    'sobrenome_crianca' => $sobrenomesCriancas[$i],
+                    'data_nascimento' => $datasNascimentoCriancas[$i],
+                ];
+
+                $criancas[] = $crianca;
+
+
+                $sheetdb->create(
+                    [
+                        'nome_encarregado' => $request->nome,
+                        'sobrenome_encarregado' => $request->sobrenome,
+                        'email' => $request->email,
+                        'telefone' => $request->telefone,
+                        'tipo_documento' => $request->tipo_documento,
+                        'numero_documento' => $request->numero_documento,
+                        'caminho_anexo' => $caminho_anexo,
+                        'nome_crianca' => $crianca['nome_crianca'],
+                        'sobrenome_crianca' => $crianca['sobrenome_crianca'],
+                        'data_nascimento_crianca' => $crianca['data_nascimento'],
+                    ]
+                );
+            }
+        }
+    }
         // $crianca->save();
         Alert::success('Salvo', 'Formulário salvo com sucesso');
         //return 'Dados salvo com sucesso';
         return redirect('admin/dashboard');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
+
+        $usuarioLog = Auth::user();
+
+        $client = new Client();
+        $url = 'https://sheetdb.io/api/v1/'.env('KEY_GOOGLE_SHEET').'/search?id='.$id;
+
+
+
+        $headers = [
+            'Content-type'  => 'application/json; charset=utf-8',
+            'Accept'        => 'application/json',
+        ];
+
+        $response = $client->request('GET', $url, [
+            'headers' => $headers
+        ]);
+
+        $formulario = json_decode($response->getBody()->getContents());
+        $formulario = $formulario[0];
+
+        return view('admin/app_visualizar_formulario', compact('formulario','usuarioLog'));
     }
 
     /**
@@ -148,9 +214,8 @@ class cadastroController extends Controller
         $encarregado->sobrenome_encarregado = $request->input('sobrenome_encarregado');
         $encarregado->email = $request->input('email');
         $encarregado->telefone = $request->input('telefone');
-        $encarregado->cpf = $request->input('cpf');
-        $encarregado->rg = $request->input('rg');
-        $encarregado->passaporte = $request->input('passaporte');
+        $encarregado->tipo_documento = $request->input('tipo_documento');
+        $encarregado->numero_documento = $request->input('numero_documento');
         $encarregado->anexo = $request->input('anexo');
 
         Alert::success('Editado', 'Dados Salvo com sucesso com sucesso');
@@ -168,5 +233,30 @@ class cadastroController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function imprimir($id){
+
+
+        $usuarioLog = Auth::user();
+
+        $client = new Client();
+        $url = 'https://sheetdb.io/api/v1/'.env('KEY_GOOGLE_SHEET').'/search?id='.$id;
+
+
+
+        $headers = [
+            'Content-type'  => 'application/json; charset=utf-8',
+            'Accept'        => 'application/json',
+        ];
+
+        $response = $client->request('GET', $url, [
+            'headers' => $headers
+        ]);
+
+        $formulario = json_decode($response->getBody()->getContents());
+        $formulario = $formulario[0];
+
+        return view('admin/app_imprimir_formulario', compact('formulario','usuarioLog'));
     }
 }

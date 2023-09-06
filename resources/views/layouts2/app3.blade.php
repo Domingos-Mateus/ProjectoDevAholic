@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-   
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
@@ -13,15 +13,15 @@
   </head>
 
   <body>
-    
+
 @include('sweetalert::alert')
 
 <br>
 <br><br>
-    
+
 @yield('conteudo')
 
 <br><br>
-@include('layouts2.footer')
+<!-- @include('layouts2.footer') -->
   </body>
 </html>
