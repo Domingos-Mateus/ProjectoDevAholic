@@ -4,9 +4,23 @@
     .mx-auto{
         margin: 10px;
     }
+
+    .img{
+        align-content: center;
+        width: 60%;
+        height: 50%;
+    }
+
+    .card-img {
+        display: flex;
+        justify-content: center;
+    }
 </style>
 
 @section('conteudo')
+<div class="text-center card-img">
+    <img src="/img/logo_da_ilha.jpeg" alt="" class="img">
+</div>
 
     <div class="pt-3" style="display: flex; justify-content: center">
         <div class="col-9 col-md-5 col-lg-7">
@@ -40,7 +54,7 @@
               </div>
           </div>
           <br>
-
+<!--
           <div class="row g-3">
 
           <div class="form-floating mb-3">
@@ -58,6 +72,22 @@
             </div>
           </div>
             <br>
+-->
+<div class="row">
+  <div class="form-floating mb-3 col">
+     <select class="form-select" id="floatingSelect"
+                    aria-label="Floating label select example" name="tipo_documento">
+                    <option>CPF</option>
+                    <option>RG</option>
+                    <option>Passaporte</option>
+                </select>
+                <label for="floatingSelect">Selecione o tipo de documento</label>
+  </div>
+  <div class="col">
+    <input type="number" name="numero_documento" class="form-control" placeholder="Número do Documento" required>
+  </div>
+</div>
+
           <div class="row g-3">
 
           <label for="">Selecione uma foto</label>

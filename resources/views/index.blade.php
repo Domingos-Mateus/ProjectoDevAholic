@@ -64,6 +64,7 @@
   </nav>
 <!--banner image-->
 <div id="carouselExampleCaptions" class="carousel slide">
+
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -73,6 +74,8 @@
     <div class="carousel-item active">
       <img src="/img/Imagmparabaner.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
+            <a href="/admin/registar" class=""><button class="btn btn-primary">Novo Formulário </button></a>
+            
         <h5>Primeiro Slid</h5>
         <p>Temos Enúmeras vantagens</p>
       </div>
@@ -80,6 +83,7 @@
     <div class="carousel-item">
       <img src="/img/Img2.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
+        <a href="/admin/registar" class=""><button class="btn btn-primary">Novo Formulário </button></a>
         <h5>Diversão</h5>
         <p>Outro conteúdo</p>
       </div>
@@ -87,6 +91,8 @@
     <div class="carousel-item">
       <img src="/img/Banner3.jpg" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
+       <h1> <a href="/admin/registar" class=""><button class="btn btn-primary">Novo Formulário </button></a></h1>
+
         <h5>Conteúdo 3</h5>
         <p>Segurança e Privacidade</p>
       </div>
