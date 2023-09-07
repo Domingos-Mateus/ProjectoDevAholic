@@ -25,7 +25,7 @@
                 <th>
                     <a href="/admin/editar_formulario/{{$formulario->id}}"><button class="btn btn-primary btn-sm"><i class="bi bi-pencil-square"></i></button></a>
                     <a href="/admin/visualizar_formulario/{{$formulario->id}}"><button class="btn btn-warning btn-sm"><i class="bi bi-eye-fill"></i></button></a>
-                    <a href="/eliminar_formulario/{{$formulario->id}}"><button class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i></button></a>
+                    <a href="/admin/eliminar_formulario/{{$formulario->id}}"><button class="btn btn-danger btn-sm"><i class="bi bi-x-circle"></i></button></a>
                 </th>
             </tr>
 

@@ -11,6 +11,7 @@ use Alert;
 use Illuminate\Support\Facades\Auth;
 use SheetDB\SheetDB;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
 
 
@@ -184,9 +185,26 @@ class cadastroController extends Controller
     public function edit($id)
     {
         //
-        $crianca = Crianca::find($id);
-        $encarregado = Encarregado::find($crianca->id_encarregado);
-        return view('cadastro/editar_cadastro', compact('crianca','encarregado'));
+        $usuarioLog = Auth::user();
+
+        $client = new Client();
+        $url = 'https://sheetdb.io/api/v1/'.env('KEY_GOOGLE_SHEET').'/search?id='.$id;
+
+
+
+        $headers = [
+            'Content-type'  => 'application/json; charset=utf-8',
+            'Accept'        => 'application/json',
+        ];
+
+        $response = $client->request('GET', $url, [
+            'headers' => $headers
+        ]);
+
+        $formulario = json_decode($response->getBody()->getContents());
+        $formulario = $formulario[0];
+
+        return view('admin/app_editar_formulario', compact('formulario','usuarioLog'));
     }
 
     /**
@@ -199,29 +217,33 @@ class cadastroController extends Controller
     public function update(Request $request, $id)
     {
 
-        //
-        $crianca = Crianca::find($id);
-
-        $crianca->nome_crianca = $request->input('nome_crianca');
-        $crianca->nome_crianca = $request->input('nome_crianca');
-        $crianca->data_nascimento = $request->input('data_nascimento');
-        $crianca->id_encarregado = $request->input('id_encarregado');
-
-        //Para editar Encarregado
-
-        $encarregado = Encarregado::find($id);
-        $encarregado->nome_encarregado = $request->input('nome_encarregado');
-        $encarregado->sobrenome_encarregado = $request->input('sobrenome_encarregado');
-        $encarregado->email = $request->input('email');
-        $encarregado->telefone = $request->input('telefone');
-        $encarregado->tipo_documento = $request->input('tipo_documento');
-        $encarregado->numero_documento = $request->input('numero_documento');
-        $encarregado->anexo = $request->input('anexo');
-
-        Alert::success('Editado', 'Dados Salvo com sucesso com sucesso');
 
 
-        return redirect('admin/listar_crianca');
+        $client = new Client();
+        $url = 'https://sheetdb.io/api/v1/'.env('KEY_GOOGLE_SHEET').'/id/'.$id;
+
+
+
+        $response = Http::withHeaders([
+           'Content-type'  => 'application/json; charset=utf-8',
+            'Accept'        => 'application/json',
+        ])->patch($url, [
+            'nome_encarregado' => $request->nome,
+            'sobrenome_encarregado' => $request->sobrenome,
+            'email' => $request->email,
+            'telefone' => $request->telefone,
+            'tipo_documento' => $request->tipo_documento,
+            'numero_documento' => $request->numero_documento,
+            'caminho_anexo' => $request->anexo,
+            'nome_crianca' => $request->nome_crianca,
+            'sobrenome_crianca' => $request->sobrenome_crianca,
+            'data_nascimento_crianca' => $request->data_nascimento_crianca,
+        ]);
+
+        Alert::success('Salvo', 'Formulário Atualizado com sucesso');
+        //return 'Dados salvo com sucesso';
+        return redirect('admin/dashboard');
+
     }
 
     /**
@@ -233,6 +255,25 @@ class cadastroController extends Controller
     public function destroy($id)
     {
         //
+
+        $client = new Client();
+        $url = 'https://sheetdb.io/api/v1/'.env('KEY_GOOGLE_SHEET').'/id/'.$id;
+
+
+        $headers = [
+            'Content-type'  => 'application/json; charset=utf-8',
+            'Accept'        => 'application/json',
+        ];
+
+        $response = $client->request('delete', $url, [
+            'headers' => $headers
+        ]);
+
+        $formulario = json_decode($response->getBody()->getContents());
+
+
+        Alert::success('Salvo', 'Formulário Eliminado com sucesso');
+        return redirect('admin/dashboard');
     }
 
     public function imprimir($id){
@@ -258,5 +299,30 @@ class cadastroController extends Controller
         $formulario = $formulario[0];
 
         return view('admin/app_imprimir_formulario', compact('formulario','usuarioLog'));
+    }
+
+    public function impressao($id){
+
+
+        $usuarioLog = Auth::user();
+
+        $client = new Client();
+        $url = 'https://sheetdb.io/api/v1/'.env('KEY_GOOGLE_SHEET').'/search?id='.$id;
+
+
+
+        $headers = [
+            'Content-type'  => 'application/json; charset=utf-8',
+            'Accept'        => 'application/json',
+        ];
+
+        $response = $client->request('GET', $url, [
+            'headers' => $headers
+        ]);
+
+        $formulario = json_decode($response->getBody()->getContents());
+        $formulario = $formulario[0];
+
+        return view('admin/app_impressao_formulario', compact('formulario','usuarioLog'));
     }
 }

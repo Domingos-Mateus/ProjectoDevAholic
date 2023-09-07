@@ -31,6 +31,7 @@ Route::get('/admin/editar_formulario/{id}', 'App\Http\Controllers\cadastroContro
 Route::post('/admin/actualizar_formulario/{id}', 'App\Http\Controllers\cadastroController@update');
 Route::get('/admin/eliminar_formulario/{id}', 'App\Http\Controllers\cadastroController@destroy');
 Route::get('/admin/imprimir_formulario/{id}', 'App\Http\Controllers\cadastroController@imprimir');
+Route::get('/admin/impressao_formulario/{id}', 'App\Http\Controllers\cadastroController@impressao');
 
 
 //Encarregados
@@ -60,7 +61,7 @@ Route::put('/editar_crianca/update/{id}', 'App\Http\Controllers\criancaControlle
 Route::get('/eliminar_crianca/{id}', 'App\Http\Controllers\criancaController@destroy');
 
 //Administrador
-Route::get('/admin/dashboard', 'App\Http\Controllers\dashboardController@index')->middleware(['auth']);
+Route::get('/admin/dashboard', 'App\Http\Controllers\dashboardController@index');
 Route::get('/logout', 'App\Http\Controllers\appController@logout');
 
 

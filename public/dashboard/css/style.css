@@ -1,4 +1,5 @@
 /********** Template CSS **********/
+
 :root {
     --primary: #009CFF;
     --light: #F3F6F9;
@@ -15,6 +16,7 @@
 
 
 /*** Spinner ***/
+
 #spinner {
     opacity: 0;
     visibility: hidden;
@@ -30,12 +32,24 @@
 
 
 /*** Button ***/
+
 .btn {
     transition: .5s;
 }
 
 .btn.btn-primary {
     color: #FFFFFF;
+    background-color: #009CFF;
+}
+
+.btn.btn-success {
+    color: #FFFFFF;
+    background-color: #198754;
+}
+
+.btn.btn-danger {
+    color: #FFFFFF;
+    background-color: #bb2d3b;
 }
 
 .btn-square {
@@ -66,6 +80,7 @@
 
 
 /*** Layout ***/
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -90,15 +105,12 @@
     .sidebar {
         margin-left: 0;
     }
-
     .sidebar.open {
         margin-left: -250px;
     }
-
     .content {
         width: calc(100% - 250px);
     }
-
     .content.open {
         width: 100%;
         margin-left: 0;
@@ -109,11 +121,9 @@
     .sidebar {
         margin-left: -250px;
     }
-
     .sidebar.open {
         margin-left: 0;
     }
-
     .content {
         width: 100%;
         margin-left: 0;
@@ -122,6 +132,7 @@
 
 
 /*** Navbar ***/
+
 .sidebar .navbar .navbar-nav .nav-link {
     padding: 7px 20px;
     color: var(--dark);
@@ -218,6 +229,7 @@
 
 
 /*** Date Picker ***/
+
 .bootstrap-datetimepicker-widget.bottom {
     top: auto !important;
 }
@@ -246,6 +258,7 @@
 
 
 /*** Testimonial ***/
+
 .progress .progress-bar {
     width: 0px;
     transition: 2s;
@@ -253,6 +266,7 @@
 
 
 /*** Testimonial ***/
+
 .testimonial-carousel .owl-dots {
     margin-top: 24px;
     display: flex;

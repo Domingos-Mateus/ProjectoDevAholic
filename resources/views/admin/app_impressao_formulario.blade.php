@@ -25,7 +25,7 @@
             <h5 class="mt-4 mb-4">TERMO DE CIÊNCIA E RESPONSABILIDADE</h5>
         </center>
 
-        <p>Eu, <span>{{$formulario->nome_encarregado}} {{$formulario->sobrenome_encarregado}}</span>, identificado por <span>{{$formulario->tipo_documento}}: {{$formulario->numero_documento}}</span>, E-mail: <span>{{$formulario->email}}</span>, Telefone: <span>{{$formulario->telefone}}</span>, na data de <span>{{ now()->format('d/m/Y') }}</span>, na cidade de Florianópolis, Estado de Santa Catarina, CEP 88063-700.</p>
+        <p>Eu, <span>{{$formulario->nome_encarregado}} {{$formulario->sobrenome_encarregado}}</span>, identificado por <span>{{$formulario->tipo_documento}}</span>, E-mail: <span>{{$formulario->email}}</span>, Telefone: <span>{{$formulario->telefone}}</span>, na data de <span>{{ now()->format('d/m/Y') }}</span>, na cidade de Florianópolis, Estado de Santa Catarina, CEP 88063-700.</p>
 
         @if($formulario->nome_crianca)
         <p>Em representação do menor <span>{{$formulario->nome_crianca}} {{$formulario->sobrenome_crianca}}</span>, nascido em <span>{{$formulario->data_nascimento_crianca}}</span>.</p>
@@ -39,7 +39,10 @@
 
         <p>Por meio deste documento, autorizo o estabelecimento a solicitar meu afastamento do parque e a proibir minha permanência em suas instalações no caso de apresentar comportamento que represente risco para mim ou para terceiros. Assumo a integral responsabilidade pela reparação dos danos que eu causar, sejam eles pessoais, materiais ou morais.</p>
 
-        </p>Também autorizo o envio de material promocional aos meus endereços e telefones.</p>
+        <div class="form-check"> <!-- Checkbox Bootstrap -->
+            <input type="checkbox" class="form-check-input" id="check_autorizo_envio_material">
+            <label class="form-check-label" for="check_autorizo_envio_material">Também autorizo o envio de material promocional aos meus endereços e telefones.</label>
+        </div>
 
         <p>Declaro que li e compreendi este termo de responsabilidade e concordo com todos os seus termos e condições, assumindo a veracidade das informações fornecidas assumindo civil e penalmente.</p>
 
@@ -49,11 +52,11 @@
         <p>Data: {{ now()->format('d/m/Y') }}</p>
     </div> <!-- Fechar o container Bootstrap -->
 
+
     <script>
         window.onload = function() {
             window.print(); // Esta linha inicia o processo de impressão
         }
     </script>
-
 </body>
 </html>

@@ -1,7 +1,7 @@
 @extends('admin.template')
 
 @section('conteudo')
-    
+
 
 
 
@@ -19,7 +19,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-xl-3">
+                <!-- <div class="col-sm-6 col-xl-3">
                     <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                         <i class="fa fa-child fa-5x text-danger"></i>
                         <div class="ms-3">
@@ -27,12 +27,12 @@
                             <h6 class="mb-0">{{$crianca}}</h6>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="col-sm-6 col-xl-3">
                     <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                         <i class="fa fa-user fa-5x text-danger"></i>
                         <div class="ms-3">
-                            <p class="mb-2">Encarregados</p>
+                            <p class="mb-2">Formulários</p>
                             <h6 class="mb-0">{{$encarregado}}</h6>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                     <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                         <i class="fa fa-chart-pie fa-5x text-danger"></i>
                         <div class="ms-3">
-                            <p class="mb-2">Total de Pessoas</p>
+                            <p class="mb-2">Total de Formulários</p>
                             <h6 class="mb-0">{{$totalPessoas}}</h6>
                         </div>
                     </div>
@@ -52,21 +52,21 @@
 
 
             <!-- Sales Chart Start -->
-           
+
             <!-- Sales Chart End -->
 
 
             <!-- Recent Sales Start -->
-           
+
             <!-- Recent Sales End -->
 
 
             <!-- Widgets Start -->
-            
+
             <!-- Widgets End -->
 
 
-            
+
         </div>
         <!-- Content End -->
 
@@ -77,4 +77,3 @@
 
     @endsection
 
-    
